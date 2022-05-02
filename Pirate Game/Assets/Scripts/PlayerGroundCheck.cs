@@ -39,7 +39,7 @@ public class PlayerGroundCheck : MonoBehaviour
 		playerController.SetGroundedState(true);
 	}
 	
-	void OnCOllisionExit(Collision collision)
+	void OnCollisionExit(Collision collision)
 	{
 		if(collision.gameObject == playerController.gameObject)
 			return;

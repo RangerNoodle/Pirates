@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 	int previousItemIndex = -1;
 	
 	float verticalLookRotation;
-	bool grounded;
+    bool grounded;
+    public bool movement_enabled;
 	Vector3 smoothMoveVelocity;
 	Vector3 moveAmount;
 	
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 			Destroy(GetComponentInChildren<Camera>().gameObject);
 			Destroy(rb);
 		}
+        movement_enabled = true;
 	}
 	
 	void Update()
@@ -45,9 +47,11 @@ public class PlayerController : MonoBehaviour
 		if(!PV.IsMine)
 			return;
 		Look();
-		Move();
-		Jump();
-		
+        if (movement_enabled)
+        {
+            Move();
+            Jump();
+        }
 		for(int i = 0; i < items.Length; i++)
 		{
 			if(Input.GetKeyDown((i + 1).ToString()))
