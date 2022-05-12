@@ -114,4 +114,14 @@ public class PlayerController : MonoBehaviour
 			return;
 		rb.MovePosition(rb.position + transform.TransformDirection(moveAmount)*Time.fixedDeltaTime);
 	}
+    public void DisablePlayerMovement()
+    {
+        rb.velocity = new Vector3(0, 0, 0);
+        moveAmount = new Vector3(0, 0, 0);
+        movement_enabled = false;
+    }
+    public void EnablePlayerMovement()
+    {
+        movement_enabled = true;
+    }
 }

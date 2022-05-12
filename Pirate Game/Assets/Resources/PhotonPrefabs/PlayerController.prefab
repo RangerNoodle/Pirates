@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5553960243618910299}
   - component: {fileID: 4088378690505625270}
   - component: {fileID: 4294618193982381145}
+  - component: {fileID: 7374731006563879533}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -205,6 +206,23 @@ MonoBehaviour:
   cam: {fileID: 0}
   ship_cam_prefab: {fileID: 1113209152052379703, guid: f385f8fa35d1b554985d8457b06f135a, type: 3}
   ship_cam: {fileID: 0}
+--- !u!114 &7374731006563879533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734563541655424801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d94c04faf6778b4cba3b82650eb74e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  at_gun: 0
+  controlling_gun: 0
+  triggered_gun: {fileID: 0}
+  controlled_gun: {fileID: 0}
+  pc: {fileID: 0}
 --- !u!1 &1254623597033988678
 GameObject:
   m_ObjectHideFlags: 0

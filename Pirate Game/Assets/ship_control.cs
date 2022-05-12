@@ -31,48 +31,9 @@ public class ship_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (at_wheel && Input.GetKeyDown(KeyCode.E) && !controlling_ship)
-        {
-            pc.movement_enabled = false;
-            ship_rbody = controlled_ship.GetComponent<Rigidbody>();
-            ship_transform = controlled_ship.transform;
-            my_offset = controlled_ship.transform.position - gameObject.transform.position;
-        }
         if (at_wheel && Input.GetKeyDown(KeyCode.E))
         {
-            controlling_ship = !controlling_ship;
-        }
-        if (controlling_ship)
-        {
-            //if ship cam does not already exist, spawn ship cam
-            if (!GameObject.Find("Ship Cam(Clone)"))
-            {
-                ship_cam = Instantiate(ship_cam_prefab);
-                ship_cam.GetComponent<CinemachineFreeLook>().Follow = controlled_ship.transform;
-                ship_cam.GetComponent<CinemachineFreeLook>().LookAt = controlled_ship.transform;
-            }
-            ship_cam.GetComponent<CinemachineFreeLook>().Priority = 20;
-            if (joint == null)
-            {
-                joint = gameObject.AddComponent<FixedJoint>();
-                joint.connectedBody = ship_rbody;
-            }
-        }
-        if (!controlling_ship)
-        {
-            //delete ship cam if it exists
-            if (ship_cam != null)
-            {
-                Destroy(ship_cam);
-            }
-            pc.movement_enabled = true;
-            ship_rbody = null;
-            ship_cam.GetComponent<CinemachineFreeLook>().Priority = 0;
-            if (joint != null)
-            {
-                Destroy(joint);
-                joint = null;
-            }
+            ShipMountToggle();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -107,6 +68,57 @@ public class ship_control : MonoBehaviour
                 Vector3 move_dir = ship_transform.forward * vertical * speed * Time.fixedDeltaTime;
                 ship_rbody.MovePosition(ship_rbody.position + move_dir);
             }
+        }
+    }
+    void ShipMountToggle()
+    {
+        if (controlling_ship) //if currently controlling ship, then dismount the ship
+        {
+            Dismount();
+            return;
+        }
+        else //if not controlling the ship, then mount the ship
+        {
+            Mount();
+            return;
+        }
+    }
+    private void Mount() //do stuff to disable player movement, center them on ship, change camera?
+    {
+        controlling_ship = true;
+        pc.DisablePlayerMovement();
+        ship_rbody = controlled_ship.GetComponent<Rigidbody>();
+        ship_transform = controlled_ship.transform;
+        my_offset = controlled_ship.transform.position - gameObject.transform.position;
+        //if ship cam does not already exist, spawn ship cam
+        if (!GameObject.Find("Ship Cam(Clone)"))
+        {
+            ship_cam = Instantiate(ship_cam_prefab);
+            ship_cam.GetComponent<CinemachineFreeLook>().Follow = controlled_ship.transform;
+            ship_cam.GetComponent<CinemachineFreeLook>().LookAt = controlled_ship.transform;
+        }
+        ship_cam.GetComponent<CinemachineFreeLook>().Priority = 20;
+        if (joint == null)
+        {
+            joint = gameObject.AddComponent<FixedJoint>();
+            joint.connectedBody = ship_rbody;
+        }
+    }
+    private void Dismount() //undo above stuff
+    {
+        controlling_ship = false;
+        pc.EnablePlayerMovement();
+        //delete ship cam if it exists
+        if (ship_cam != null)
+        {
+            Destroy(ship_cam);
+        }
+        ship_rbody = null;
+        ship_cam.GetComponent<CinemachineFreeLook>().Priority = 0;
+        if (joint != null)
+        {
+            Destroy(joint);
+            joint = null;
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ship
   - PlayerGroundCheck
+  - ShipTurret
   layers:
   - Default
   - TransparentFX
