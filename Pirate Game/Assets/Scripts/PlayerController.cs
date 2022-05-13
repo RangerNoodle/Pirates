@@ -6,7 +6,7 @@ using Photon.Pun;
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField] GameObject cameraHolder;
-	[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
+	[SerializeField] public float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 	[SerializeField] Item[] items;
 	
 	int itemIndex;
@@ -46,9 +46,9 @@ public class PlayerController : MonoBehaviour
 	{
 		if(!PV.IsMine)
 			return;
-		Look();
         if (movement_enabled)
         {
+            Look();
             Move();
             Jump();
         }

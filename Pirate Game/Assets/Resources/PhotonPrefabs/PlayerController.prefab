@@ -221,7 +221,7 @@ MonoBehaviour:
   at_gun: 0
   controlling_gun: 0
   triggered_gun: {fileID: 0}
-  controlled_gun: {fileID: 0}
+  t_platform: {fileID: 0}
   pc: {fileID: 0}
 --- !u!1 &1254623597033988678
 GameObject:

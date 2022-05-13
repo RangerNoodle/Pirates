@@ -540,9 +540,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 3788968779450110740, guid: 5ceca76c2dfb4254ca6158b99a773d44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.104
+      objectReference: {fileID: 0}
     - target: {fileID: 5017629105843305231, guid: 5ceca76c2dfb4254ca6158b99a773d44, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799823270272864218, guid: 5ceca76c2dfb4254ca6158b99a773d44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ceca76c2dfb4254ca6158b99a773d44, type: 3}

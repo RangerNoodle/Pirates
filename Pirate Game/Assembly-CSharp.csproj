@@ -53,8 +53,10 @@
     <UnityVersion>2021.3.0f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\gun_control.cs" />
     <Compile Include="Assets\Scripts\ItemInfo.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
+    <Compile Include="Assets\gun_variables.cs" />
     <Compile Include="Assets\ship_control.cs" />
     <Compile Include="Assets\Scripts\PlayerGroundCheck.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
@@ -69,8 +71,6 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
-    <Compile Include="Assets\gun_control.cs" />
-    <Compile Include="Assets\gun_variables.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

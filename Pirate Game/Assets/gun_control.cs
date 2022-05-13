@@ -5,14 +5,16 @@ using UnityEngine;
 public class gun_control : MonoBehaviour
 {
     public bool at_gun, controlling_gun;
-    public GameObject triggered_gun, controlled_gun;
+    public GameObject triggered_gun, t_platform;
     public PlayerController pc;
-    Transform t_seat;
-
+    Transform t_seat, t_pivot;
+    float mouseSensitivity, smoothTime, verticalLookRotation;
     // Start is called before the first frame update
     void Start()
     {
         pc = GetComponent<PlayerController>();
+        mouseSensitivity = pc.mouseSensitivity;
+        smoothTime = pc.smoothTime;
     }
 
     // Update is called once per frame
@@ -25,6 +27,12 @@ public class gun_control : MonoBehaviour
         if (controlling_gun)
         {
             //rotate y axis via parent, rotate z axis via gun seat
+            t_platform.transform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X"));
+
+            verticalLookRotation = -Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
+            verticalLookRotation = Mathf.Clamp(verticalLookRotation, -45f, 45f);
+
+            t_pivot.Rotate(Vector3.left, verticalLookRotation);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -60,15 +68,16 @@ public class gun_control : MonoBehaviour
     private void Mount() //do stuff to disable player movement, center them on gun turret, change camera?, show turret UI (reticle, ammo remaining, reload time)
     {
         controlling_gun = true;
-        pc.EnablePlayerMovement();
-        controlled_gun = triggered_gun;
-        t_seat = controlled_gun.transform.Find("Turret Base").Find("Turret Seat");
+        pc.DisablePlayerMovement();
+        t_platform = triggered_gun;
+        t_pivot = t_platform.transform.Find("Turret Base").Find("Pivot Point");
+        t_seat = t_pivot.Find("Turret Seat");
         transform.parent = t_seat;
     }
     private void Dismount() //undo above stuff
     {
         controlling_gun = false;
-        pc.DisablePlayerMovement();
-        controlled_gun = null;
+        pc.EnablePlayerMovement();
+        t_platform = null;
     }
 }
