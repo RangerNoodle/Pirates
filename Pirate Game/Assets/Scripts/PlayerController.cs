@@ -119,9 +119,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(0, 0, 0);
         moveAmount = new Vector3(0, 0, 0);
         movement_enabled = false;
+        rb.isKinematic = true;
     }
     public void EnablePlayerMovement()
     {
         movement_enabled = true;
+        rb.isKinematic = false;
     }
 }

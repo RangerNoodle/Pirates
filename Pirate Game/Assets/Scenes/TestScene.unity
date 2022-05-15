@@ -1163,13 +1163,27 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138133203628943834}
+  - component: {fileID: 766016308617491297}
   m_Layer: 0
   m_Name: Rail Ship Attempt 1
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!135 &766016308617491297
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766016308617491296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1003288536859950165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1195,7 @@ GameObject:
   - component: {fileID: 3862709661463507647}
   - component: {fileID: 5505167206278562849}
   - component: {fileID: 4134380890962876670}
+  - component: {fileID: 5505167206278562850}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -1252,4 +1267,18 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003288536859950165}
+  m_Mesh: {fileID: -5495902117074765545, guid: c273c2a1772575f40b7c017bbe2835c4, type: 3}
+--- !u!64 &5505167206278562850
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003288536859950165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: c273c2a1772575f40b7c017bbe2835c4, type: 3}

@@ -15,6 +15,7 @@ public class gun_control : MonoBehaviour
         pc = GetComponent<PlayerController>();
         mouseSensitivity = pc.mouseSensitivity;
         smoothTime = pc.smoothTime;
+        verticalLookRotation = 90f;
     }
 
     // Update is called once per frame
@@ -29,10 +30,10 @@ public class gun_control : MonoBehaviour
             //rotate y axis via parent, rotate z axis via gun seat
             t_platform.transform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X"));
 
-            verticalLookRotation = -Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
-            verticalLookRotation = Mathf.Clamp(verticalLookRotation, -45f, 45f);
+            verticalLookRotation += Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
+            verticalLookRotation = Mathf.Clamp(verticalLookRotation, 45f, 120f);
 
-            t_pivot.Rotate(Vector3.left, verticalLookRotation);
+            t_pivot.localEulerAngles = Vector3.left* verticalLookRotation + new Vector3(0,0,-180);
         }
     }
     private void OnTriggerEnter(Collider other)

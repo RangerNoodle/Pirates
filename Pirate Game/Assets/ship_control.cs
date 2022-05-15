@@ -41,6 +41,7 @@ public class ship_control : MonoBehaviour
         if (other.gameObject.CompareTag("Ship"))
         {
             at_wheel = true;
+            controlled_ship = other.gameObject;
             //display a prompt letting the player know they can press E to control the ship
         }
     }
@@ -49,6 +50,7 @@ public class ship_control : MonoBehaviour
         if (other.gameObject.CompareTag("Ship"))
         {
             at_wheel = false;
+            controlled_ship = null;
             //remove the prompt letting the player know they can press E to control the ship
         }
     }
