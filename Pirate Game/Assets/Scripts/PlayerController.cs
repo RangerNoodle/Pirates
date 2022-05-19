@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 		{
-			Destroy(GetComponentInChildren<Camera>().gameObject);
+			Destroy(GetComponentInChildren<CinemachineVirtualCamera>().gameObject);
 			Destroy(rb);
 		}
         movement_enabled = true;
@@ -119,11 +120,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(0, 0, 0);
         moveAmount = new Vector3(0, 0, 0);
         movement_enabled = false;
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
     }
     public void EnablePlayerMovement()
     {
         movement_enabled = true;
-        rb.isKinematic = false;
+        //rb.isKinematic = false;
     }
 }
